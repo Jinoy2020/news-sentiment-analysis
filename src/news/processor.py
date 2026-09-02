@@ -1,20 +1,29 @@
+
+from src.sentiment.analyzer import analyze_sentiment
+
 def process_articles(articles):
-    """Clean and standardize raw GNews articles.
+    """Clean articles and add sentiment analysis."""
 
-    Args:
-        articles (list): Raw article dictionaries from GNews.
-
-    Returns:
-        list: Cleaned article dictionaries.
-    """
     processed_articles = []
 
     for article in articles:
+        title = article.get("title")
+        description = article.get("description")
+        content = article.get("content")
+
+        # Use title + description for sentiment analysis
+        text = " ".join(
+            part for part in [title, description, content]
+            if part
+        )
+
+        sentiment_result = analyze_sentiment(text)
+
         processed_article = {
             "id": article.get("id"),
-            "title": article.get("title"),
-            "description": article.get("description"),
-            "content": article.get("content"),
+            "title": title,
+            "description": description,
+            "content": content,
             "url": article.get("url"),
             "image": article.get("image"),
             "published_at": article.get("publishedAt"),
@@ -22,6 +31,8 @@ def process_articles(articles):
             "source_name": article.get("source", {}).get("name"),
             "source_url": article.get("source", {}).get("url"),
             "source_country": article.get("source", {}).get("country"),
+            "sentiment": sentiment_result["label"],
+            "sentiment_score": sentiment_result["score"],
         }
 
         processed_articles.append(processed_article)

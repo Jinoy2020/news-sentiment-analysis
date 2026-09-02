@@ -1,7 +1,10 @@
 import os
-from processor import process_articles
 import requests
 from dotenv import load_dotenv
+
+from src.news.processor import process_articles
+from src.storage.s3 import upload_raw_news
+from src.database.insert_news import insert_news
 
 
 load_dotenv()
@@ -36,9 +39,11 @@ def fetch_news():
 
     return response.json()
 
-
 if __name__ == "__main__":
     news = fetch_news()
+
+    # Upload raw GNews response to S3
+    upload_raw_news(news)
 
     articles = news.get("articles", [])
 
@@ -47,4 +52,9 @@ if __name__ == "__main__":
     processed_articles = process_articles(articles)
 
     print(f"Processed {len(processed_articles)} articles.")
-    print(processed_articles[0])
+
+    # Insert processed articles into PostgreSQL
+    for article in processed_articles:
+        insert_news(article)
+
+    print(f"Inserted {len(processed_articles)} articles into PostgreSQL.")
