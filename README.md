@@ -1108,59 +1108,7 @@ Negative Articles  : 10
 
 These values are generated from the PostgreSQL data and change as new articles are processed.
 ```
----
 
-# 🔍 Why These AWS Services?
-
-## Why EventBridge?
-
-EventBridge provides scheduled execution without requiring a continuously running scheduler server.
-
----
-
-## Why Lambda?
-
-Lambda is suitable for short-lived ingestion and processing tasks and removes the need to maintain a server for the pipeline.
-
----
-
-## Why S3?
-
-S3 provides durable storage for the original API response and separates raw data from transformed data.
-
----
-
-## Why PostgreSQL?
-
-News records and sentiment information are structured and can be efficiently queried using SQL.
-
-PostgreSQL provides:
-
-- Relational storage
-- SQL querying
-- Constraints
-- Indexing
-- Structured schemas
-
----
-
-## Why ECS Fargate?
-
-The Streamlit dashboard is a continuously running web application. Fargate allows it to run as a managed container without requiring EC2 server management.
-
----
-
-## Why ECR?
-
-ECR provides private storage for Docker images used by AWS workloads.
-
----
-
-## Why Docker?
-
-Docker packages the application, runtime, and dependencies into reproducible container images.
-
----
 
 # 🔮 Future Improvements
 
