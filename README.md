@@ -1213,46 +1213,6 @@ This project provides practical experience with:
 
 ---
 
-# 🧑‍🤝‍🧑 Team Contribution
-
-The project was developed collaboratively with contributions across:
-
-- API integration
-- Data processing
-- Sentiment analysis
-- Database development
-- AWS infrastructure
-- Docker
-- ECR
-- Lambda
-- EventBridge
-- ECS Fargate
-- Streamlit
-- Testing
-- Documentation
-- Git/GitHub workflow
-
-
----
-
-# 🏁 Project Status
-```
-Component                         Status
---------------------------------  ----------------
-GNews API Integration             ✅ Completed
-News Processing                   ✅ Completed
-VADER Sentiment Analysis          ✅ Completed
-Amazon S3 Integration             ✅ Completed
-Amazon RDS PostgreSQL             ✅ Completed
-AWS Lambda                        ✅ Deployed
-EventBridge Scheduler             ✅ Configured
-Docker Containerization           ✅ Completed
-Amazon ECR                        ✅ Configured
-ECS Fargate                       ✅ Deployed
-Streamlit Dashboard               ✅ Deployed
-CloudWatch Logging                ✅ Configured
-End-to-End Pipeline               ✅ Working
-```
 ---
 
 # 🎓 Conclusion
